@@ -1,0 +1,10 @@
+
+def solution(l, r):
+    answer = []
+    for a in range(l, r + 1):
+        if a%5==0:
+            five = str(a // 5)
+            if set(five) <= {'0', '1'}:
+                answer.append(a)
+
+    return sorted(answer) if answer else [-1]

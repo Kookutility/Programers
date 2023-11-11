@@ -1,0 +1,24 @@
+from collections import Counter
+def solution(a, b, c, d):
+    a_list = [a, b, c, d]
+    set_list = list(set([a, b, c, d]))
+    answer = 0
+    counter = Counter(a_list)
+    if len(set_list) == 4:
+        answer = min(set_list)
+
+    elif len(set_list) == 3:
+        u = [x for x, count in counter.items() if count == 1]
+        answer = u[0] * u[1]
+
+    elif len(set_list) == 2:
+        if counter[set_list[0]] == 3 :
+            answer = (10 * set_list[0] + set_list[1])**2
+        elif counter[set_list[1]] == 3:
+            answer = (10 * set_list[1] + set_list[0])**2
+        else:
+            answer = (set_list[0] + set_list[1]) * abs(set_list[0]-set_list[1])
+    else:
+        answer = a * 1111
+
+    return answer

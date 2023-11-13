@@ -1,0 +1,9 @@
+def solution(intStrs, k, s, l):
+    answer = []
+    for i in intStrs:
+        intStrs_list = list(i)
+        intStrs_list = intStrs_list[s:] 
+        substring = int("".join(intStrs_list[:l]))
+        if substring > k:
+            answer.append(substring)
+    return answer

@@ -1,0 +1,10 @@
+def solution(my_string):
+    answer = [0 for i in range(52)]
+    for i in range(len(my_string)):
+        a=ord(my_string[i])
+        if a>=97 :
+            answer[a-71]+=1
+        else:
+            answer[a-65]+=1
+
+    return answer

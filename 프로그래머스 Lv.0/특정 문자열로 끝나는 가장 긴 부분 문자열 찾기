@@ -1,0 +1,6 @@
+def solution(myString, pat):
+    for i in range(len(myString)):
+        if myString.endswith(pat) == True:
+            break;
+        myString = myString[:-1]
+    return myString

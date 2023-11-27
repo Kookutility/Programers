@@ -1,0 +1,10 @@
+def solution(wallpaper):
+    file_x=[]
+    file_y=[]
+    for y, row in enumerate(wallpaper):
+        for x, i in enumerate(row):
+            if i == "#":
+                file_y.append(y)
+                file_x.append(x)
+    
+    return [min(file_y),min(file_x),max(file_y)+1,max(file_x)+1]

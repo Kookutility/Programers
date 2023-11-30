@@ -1,0 +1,8 @@
+def solution(n, m, section):
+    answer = 0
+    end = 0
+    for i in section:
+        if i > end:
+            end = i + m - 1
+            answer += 1
+    return answer

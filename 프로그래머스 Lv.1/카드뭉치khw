@@ -1,0 +1,15 @@
+def solution(cards1, cards2, goal):
+    idx=0
+    j_idx=0
+    for i in range(len(cards1) - 1):
+        if cards1[i] not in goal and cards1[i + 1] in goal:
+            return "No"
+    cards1 = [c for c in cards1 if c in goal]
+    for i in range(len(goal)):
+        for j in range(len(cards2)):
+            if cards2[j] == goal[i]:
+                idx=i
+                if j_idx <= j:
+                    cards1.insert(idx,cards2[j])
+                    j_idx=j
+    return "Yes" if cards1==goal else "No"

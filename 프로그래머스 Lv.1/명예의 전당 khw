@@ -1,0 +1,15 @@
+def solution(k, score):
+    answer = []
+    sl=[]
+    for i in range(len(score)):
+        if len(sl) < k:
+            sl.append(score[i])
+            answer.append(min(sl))
+        else :
+            if score[i] > min(sl):
+                sl.remove(min(sl))
+                sl.append(score[i])
+                answer.append(min(sl))
+            else :
+                answer.append(min(sl))
+    return answer

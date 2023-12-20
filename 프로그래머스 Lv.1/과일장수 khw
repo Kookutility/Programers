@@ -1,0 +1,8 @@
+def solution(k, m, score):
+    answer = 0
+    box_len = len(score) // m
+    score.sort(reverse=True)
+    for i in range(box_len):
+        box = score[i * m : (i+1) * m ]
+        answer += min(box) * m
+    return answer

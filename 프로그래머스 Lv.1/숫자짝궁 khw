@@ -1,0 +1,9 @@
+def solution(X, Y):
+    xy =set(X)&set(Y)
+    if not xy:
+        return "-1"
+    elif len(xy) == 1 and "0" in xy:
+        return "0"
+    # 각 공통된 숫자를 X와 Y에서 나타나는 횟수중 더 작은 수만큼 반복하여 문자열 생성
+    result = [n * min(X.count(n), Y.count(n)) for n in xy]
+    return "".join(sorted(result, reverse=True))

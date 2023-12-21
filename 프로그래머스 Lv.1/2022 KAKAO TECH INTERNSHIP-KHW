@@ -1,0 +1,14 @@
+def solution(survey, choices):
+    answer = ''
+    indicator = {'R':0,'T':0,'C':0,'F':0,'J':0,'M':0,'A':0,'N':0}
+    for s, c in zip(survey, choices):
+        if c < 4:
+            indicator[s[0]] += 4 - c
+        
+        else :
+            indicator[s[1]] += c - 4
+    answer += 'R' if indicator['R'] >= indicator['T'] else 'T'
+    answer += 'C' if indicator['C'] >= indicator['F'] else 'F'
+    answer += 'J' if indicator['J'] >= indicator['M'] else 'M'
+    answer += 'A' if indicator['A'] >= indicator['N'] else 'N'
+    return answer

@@ -1,0 +1,9 @@
+
+def solution(lottos, win_nums):
+    lotto_dict={0:6,1:6,2:5,3:4,4:3,5:2,6:1}
+    zero_nums = lottos.count(0)
+    correct_nums = len(set(lottos) & set(win_nums))
+    best_nums = correct_nums + zero_nums
+    lowest_nums = correct_nums
+    result = [lotto_dict[best_nums], lotto_dict[lowest_nums]]
+    return result

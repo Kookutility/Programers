@@ -8,7 +8,7 @@ def solution(new_id):
             pass
         else:
             answer = answer.replace(i,'')
-    answer = re.sub(r'\.{2,}','.',answer)#3단계
+    answer = re.sub(r'\.+','.',answer)#3단계
     
     answer = answer.strip('.')#4단계
     

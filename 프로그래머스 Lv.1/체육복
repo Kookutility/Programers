@@ -1,0 +1,20 @@
+def solution(n, lost, reserve):
+    answer = 0
+    real_lost = []
+    final_lost=[]
+    for i in sorted(lost):
+        if i in reserve:
+            reserve.remove(i)
+        else:
+            real_lost.append(i)
+            
+    for i in real_lost:
+        if i-1 in reserve:
+            reserve.remove(i-1)
+        elif i+1 in reserve:
+            reserve.remove(i+1)
+        else:
+            final_lost.append(i)
+            
+    answer = n - len(final_lost)
+    return answer

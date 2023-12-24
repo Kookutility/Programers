@@ -1,0 +1,8 @@
+def solution(s, skip, index):
+    set_alphabet = sorted(set("abcdefghijklmnopqrstuvwxyz") - set(skip))
+    answer=''
+    len_alphabet = len(set_alphabet)
+    for i in s:
+            answer += set_alphabet[(set_alphabet.index(i) + index) % len_alphabet]
+    return answer
+// % 나머지 처리로, index내의 알파벳 순서 조절

@@ -1,0 +1,9 @@
+from collections import Counter
+
+def solution(participant, completion):
+    participant_dict = dict(Counter(participant))
+    for i in completion:
+        if i in participant_dict:
+            participant_dict[i]-=1
+    answer = [key for key in participant_dict if participant_dict[key] == 1]
+    return answer[0]

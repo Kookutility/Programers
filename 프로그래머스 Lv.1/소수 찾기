@@ -1,0 +1,9 @@
+def solution(n):
+    primes=[True] * (n + 1) #모든 수를 소수로 가정
+    p = 2# 0과1은 제외
+    while p * p <= n:
+        if primes[p] == True:
+            for i in range(p*p,n+1,p):
+                primes[i] = False #소수의 배수는 소수가 아니므로 false
+        p+=1
+    return primes.count(True)-2  #0과1제거

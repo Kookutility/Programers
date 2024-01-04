@@ -1,0 +1,11 @@
+def hanoi(n,a,b,c,answer):
+    if n == 1:
+        answer.append([a,c])
+    else :
+        hanoi(n-1,a,c,b,answer) # n-1개의 원반을 중간기둥으로 이동
+        answer.append([a,c])    # 젤 큰 원반을 첫째에서 마지막으로 이동
+        hanoi(n-1,b,a,c,answer) # 중간 기둥에 있는 남은 원반은 목표기둥으로 이동
+def solution(n):
+    answer = []
+    hanoi(n,1,2,3,answer)
+    return answer

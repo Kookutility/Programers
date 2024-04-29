@@ -1,0 +1,20 @@
+from collections import deque
+def solution(p, location):
+    answer = 0
+    check = []
+    pc = [chr(65+i)for i in range(len(p)) ]
+    queue = deque(pc)
+    queue_2 = deque(p) 
+    while queue: 
+        if max(queue_2) == queue_2[0]:
+            answer += 1
+            a = queue.popleft()
+            b = queue_2.popleft()
+            if pc[location] == a:
+                return answer
+        else:
+            a = queue.popleft()
+            b = queue_2.popleft()
+            queue.append(a)
+            queue_2.append(b)
+    return answer

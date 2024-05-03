@@ -1,0 +1,14 @@
+def solution(c):
+    l_cnt = 0 #이전 cnt갯수 저장
+    c_cnt = 0 
+    for i in range(1,len(c)+1):
+        l_cnt = c_cnt 
+        c_cnt = 0
+        for j in c:
+            if j >= i :
+                c_cnt += 1       
+        if c_cnt == i:
+            return c_cnt
+        elif c_cnt < i and l_cnt > (i-1):
+            return i-1
+    return 0

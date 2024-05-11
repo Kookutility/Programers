@@ -1,0 +1,7 @@
+def solution(b, y):
+    for i in range(3, (b+y)):
+        if (b+y) % i == 0:
+            j = (b + y)//i
+            if b == ((i * 2) + (j * 2)) - 4:
+                return [j,i]
+    return 0

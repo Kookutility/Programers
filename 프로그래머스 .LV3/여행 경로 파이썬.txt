@@ -1,0 +1,17 @@
+def solution(tickets):
+    visited = [False] * len(tickets)
+    tickets = sorted(tickets)
+    answer = []
+    def dfs(cur,path):
+        if len(path) == len(tickets) + 1 :
+            answer.append(path)
+        for i,j in enumerate(tickets):
+            if visited[i] == False and cur == j[0] :
+                visited[i] = True
+                print(path + [j[1]])
+                dfs(j[1],path + [j[1]])
+                visited[i] = False
+                                   
+    dfs("ICN",["ICN"])
+
+    return answer[0]

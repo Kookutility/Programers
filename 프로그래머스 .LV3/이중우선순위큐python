@@ -1,0 +1,24 @@
+import heapq
+def solution(operations):
+    max_heap = []
+    min_heap = []
+    for i in operations:
+        if "I" in i:
+            i = i.split("I ")
+            i = int(i[1])
+            heapq.heappush(min_heap,i)
+            heapq.heappush(max_heap,-i)
+        elif "D 1" in i:
+            if len(max_heap) > 0:
+                M = heapq.heappop(max_heap)
+                min_heap.remove(-M)
+        elif "D -1" in i:
+            if len(min_heap) > 0:
+                m = heapq.heappop(min_heap)
+                max_heap.remove(-m)
+    if len(max_heap) == 0 :
+        return [0,0]
+    else:
+        M = heapq.heappop(max_heap)
+        m = heapq.heappop(min_heap)
+    return [-M,m]

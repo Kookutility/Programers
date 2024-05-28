@@ -1,0 +1,25 @@
+def solution(genres, plays):
+    answer = []
+    album = {}
+    for g, p in zip(genres,plays):
+        if g in album:
+            album[g] += p
+        else:
+            album[g] = p #각 장르별 총 재생 수 저장
+    album = [k for k,v in sorted(album.items(), key = lambda item : item[1], reverse = True)] 
+    #최다 재생 장르 순서대로 저장 
+    
+    for most in album: # 최다 재생 장르 순서로 저장하기 위해 비교 판단
+        genre_play = [] #현 장르에 대한 곡 재생 수
+        for genre, play in zip(genres,plays):
+            if most == genre: 
+                genre_play.append(play)
+        genre_play = sorted(genre_play, reverse = True)[:2]  #현장르에 대한 곡재생 수 2개 오름차순저장
+        print(genre_play)
+        for i in genre_play:
+            idx = plays.index(i)
+            if idx not in answer:
+                answer.append(idx)#해당 재생수의 인덱스 저장
+            else:
+                answer.append(plays.index(i,idx + 1))#재생수가 같다면 해당 재생수의 다음 인덱스 저장
+    return answer

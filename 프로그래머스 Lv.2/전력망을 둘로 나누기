@@ -1,0 +1,29 @@
+from collections import defaultdict, deque
+
+def dfs(w, n, dic):
+    cnt = 1 (끊는 전력망에 연결된 송신탑)
+    queue = deque([w[0]])
+    visited = [False] * (n + 1)
+    visited[w[0]] = True  # 시작 노드를 방문 처리
+    while queue:
+        curr = queue.popleft()
+        for i in dic[curr]:
+            if not visited[i]:
+                if i == w[1]:  # 연결된 노드에 w[1]이 포함된다면 끊기
+                    continue 
+                queue.append(i)
+                cnt += 1
+                visited[i] = True
+                
+    return cnt
+
+def solution(n, wires):
+    dic = defaultdict(list)
+    answer = []
+    for a, b in wires:
+        dic[a].append(b)
+        dic[b].append(a)
+    for w in wires:
+        tmp = dfs(w, n, dic)(w를 끊은 후 나머지 노드수)
+        answer.append(abs(n - tmp - tmp))  # 두 트리의 크기 차이 계산
+    return min(answer)
